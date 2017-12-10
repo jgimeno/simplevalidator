@@ -1,14 +1,15 @@
-package rule_validator_test
+package simplevalidator_test
 
 import (
 	"testing"
-	"github.com/jgimeno/rule-validator"
+
+	"github.com/jgimeno/simplevalidator"
 )
 
 func TestItOnlyNeedsATrueRuleToReturnTrue(t *testing.T) {
 	trueRule := TrueRule{}
 
-	v := rule_validator.NewValidator([]rule_validator.Rule{trueRule, FalseRule{}})
+	v := simplevalidator.NewValidator([]simplevalidator.Rule{trueRule, FalseRule{}})
 
 	r := v.Validate()
 
@@ -20,7 +21,7 @@ func TestItOnlyNeedsATrueRuleToReturnTrue(t *testing.T) {
 func TestWithFalseRules(t *testing.T) {
 	falseRule := FalseRule{}
 
-	v := rule_validator.NewValidator([]rule_validator.Rule{falseRule, falseRule})
+	v := simplevalidator.NewValidator([]simplevalidator.Rule{falseRule, falseRule})
 
 	r := v.Validate()
 
